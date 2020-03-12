@@ -9,14 +9,11 @@ url="http://wiki.ros.org/franka_description"
 license=('Apache 2.0')
 
 makedepends=(
-
-
+'cmake'
 )
 
 depends=(
-
 'ros-melodic-xacro'
-
 )
 
 provides=($pkgname)
