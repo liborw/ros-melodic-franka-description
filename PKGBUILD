@@ -1,26 +1,35 @@
-
-# Maintainer: 
 pkgname="ros-melodic-franka-description"
 pkgver="0.6.0"
 pkgrel=1
 pkgdesc="franka_description contains URDF files and meshes of Franka Emika robots"
-arch=('x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.ros.org/franka_description"
 license=('Apache 2.0')
 
+ros_makedepends=(
+'ros-melodic-catkin'
+)
+
 makedepends=(
 'cmake'
+'ros-build-tools'
+${ros_makedepends[@]}
+)
+
+ros_depends=(
+'ros-melodic-xacro'
 )
 
 depends=(
-'ros-melodic-xacro'
+${ros_depends[@]}
 )
 
 provides=($pkgname)
 conflicts=($pkgname)
-_dir="franka_ros-release-release-melodic-franka_description-0.6.0-1"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_description/0.6.0-1.tar.gz")
-md5sums=('f0ceec6f6f0274a88ccdd85609276d9a')
+
+_dir="franka_ros-$pkgver/franka_description"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/frankaemika/franka_ros/archive/$pkgver.tar.gz")
+sha256sums=(6bfc7f743569e7491d44b82e1b9c39ace55881b7f42e4952e202e13d1e70a6b9)
 
 build() {
 	# Use ROS environment variables
